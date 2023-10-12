@@ -22,7 +22,6 @@ WindowDragger::WindowDragger(QWidget *parent) : QWidget(parent) {
 void WindowDragger::mousePressEvent(QMouseEvent *event) {
   mousePressed = true;
   mousePos = event->globalPos();
-
   QWidget *parent = parentWidget();
   if (parent) parent = parent->parentWidget();
 
@@ -45,7 +44,7 @@ void WindowDragger::mouseReleaseEvent(QMouseEvent *event) {
 void WindowDragger::paintEvent(QPaintEvent *event) {
   Q_UNUSED(event);
   QStyleOption styleOption;
-  styleOption.init(this);
+  styleOption.initFrom(this);
   QPainter painter(this);
   style()->drawPrimitive(QStyle::PE_Widget, &styleOption, &painter, this);
 }
